@@ -9,4 +9,5 @@ import (
 func RouteInit(e *echo.Echo) {
 	e.POST("/books", controller.CreateBook)
 	e.GET("/books", controller.GetAllBook)
+	e.GET("/books/:id", controller.GetBookById)
 }

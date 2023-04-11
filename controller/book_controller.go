@@ -79,3 +79,25 @@ func GetAllBook(e echo.Context) error {
 	})
 
 }
+
+func GetBookById(e echo.Context) error {
+	//Proses menerima parameter id
+	id := e.Param("id")
+
+	book := model.Book{}
+
+	//Proses get data dari database
+	err := configuration.DB.First(&book, id).Error
+	if err != nil {
+		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+			Message: "Get Data Gagal!",
+			Error:   err.Error(),
+		})
+	}
+
+	return e.JSON(http.StatusOK, model.ResponseOK{
+		Message: "Sukses!",
+		Data:    book,
+	})
+
+}
