@@ -60,3 +60,22 @@ func CreateBook(e echo.Context) error {
 	})
 
 }
+
+func GetAllBook(e echo.Context) error {
+	books := []model.Book{}
+
+	//Proses get data dari database
+	err := configuration.DB.Find(&books).Error
+	if err != nil {
+		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+			Message: "Get Data Gagal!",
+			Error:   err.Error(),
+		})
+	}
+
+	return e.JSON(http.StatusOK, model.ResponseOK{
+		Message: "Sukses!",
+		Data:    books,
+	})
+
+}
