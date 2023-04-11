@@ -2,6 +2,8 @@ package configuration
 
 import (
 	"fmt"
+	"log"
+	"project_prakerja2023/model"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -26,4 +28,18 @@ func DatabaseInit() {
 		panic("Connection Failed!")
 	}
 	fmt.Println("Connection Success!")
+
+	runMigration()
+}
+
+func runMigration() {
+	//melakukan dengan auto migration ke database
+	err := DB.AutoMigrate(&model.Book{})
+	if err != nil {
+		log.Println(err)
+		fmt.Println("AutoMigrate Failed!")
+	} else {
+		fmt.Println("AutoMigrate Succeed! ")
+	}
+
 }
