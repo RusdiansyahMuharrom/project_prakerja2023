@@ -8,9 +8,9 @@ import (
 
 type Book struct {
 	Id                 uint           `json:"id" gorm:"primaryKey"`
-	No_ISBN            string         `json:"no_isbn" gorm:"type:varchar(100);not null;unique"`
-	Judul              string         `json:"judul" gorm:"type:varchar(100);not null"`
-	Penerbit           string         `json:"penerbit" gorm:"type:varchar(100);not null"`
+	No_ISBN            string         `json:"no_isbn" gorm:"type:varchar(100);not null"`
+	Judul              string         `json:"judul" gorm:"type:varchar(255);not null"`
+	Penerbit           string         `json:"penerbit" gorm:"type:varchar(255);not null"`
 	Penulis            string         `json:"penulis" gorm:"type:varchar(255);not null"`
 	Tanggal_penerimaan string         `json:"tanggal_penerimaan" gorm:"type:date;not null"`
 	Tahun_terbit       int            `json:"tahun_terbit" gorm:"not null"`
