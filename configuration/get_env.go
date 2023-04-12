@@ -15,3 +15,11 @@ func Get_env(key string) string {
 	}
 	return os.Getenv(key)
 }
+
+func GetPort() string {
+	port := os.Getenv("PORT")
+	if port == "" {
+		return Get_env("APP_PORT")
+	}
+	return port
+}
