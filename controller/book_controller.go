@@ -9,6 +9,17 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Post Data Buku
+// @Summary     Insert Data Buku
+// @Description Semua wajib diisi kecuali keterangan
+// @ID          insert-buku
+// @Accept      json
+// @Produce     json
+// @Param       Input body model.BookRequest true "Request Body"
+// @Tags        Book
+// @Success     200 {object} model.ResponseOK
+// @Failure     400 {object} model.ResponseError
+// @Router      /books [post]
 func CreateBook(e echo.Context) error {
 	bookRequest := model.BookRequest{}
 
@@ -61,6 +72,15 @@ func CreateBook(e echo.Context) error {
 
 }
 
+// Get Data Buku All
+// @Summary     Get Data Buku All
+// @ID          get-buku-all
+// @Produce     json
+// @Tags        Book
+// @Success     200 {object} model.ResponseOK
+// @Failure     400 {object} model.ResponseError
+// @Failure     400 {object} model.ResponseError
+// @Router      /books [get]
 func GetAllBook(e echo.Context) error {
 	books := []model.Book{}
 
@@ -80,6 +100,18 @@ func GetAllBook(e echo.Context) error {
 
 }
 
+// Update Data Buku
+// @Summary     Update Data Buku
+// @Description Semua wajib diisi kecuali keterangan
+// @ID          update-buku
+// @Accept      json
+// @Produce     json
+// @Param       Input body model.BookRequest true "Request Body"
+// @Tags        Book
+// @Success     200 {object} model.ResponseOK
+// @Failure     400 {object} model.ResponseError
+// @Failure     400 {object} model.ResponseError
+// @Router      /books/{id} [put]
 func GetBookById(e echo.Context) error {
 	//Proses menerima parameter id
 	id := e.Param("id")
@@ -102,6 +134,15 @@ func GetBookById(e echo.Context) error {
 
 }
 
+// Get Data Buku By Id
+// @Summary     Get Data Buku By Id
+// @ID          get-buku-by-id
+// @Produce     json
+// @Tags        Book
+// @Success     200 {object} model.ResponseOK
+// @Failure     400 {object} model.ResponseError
+// @Failure     400 {object} model.ResponseError
+// @Router      /books/{id} [get]
 func UpdateBook(e echo.Context) error {
 	//Proses menerima parameter id
 	id := e.Param("id")
@@ -165,6 +206,15 @@ func UpdateBook(e echo.Context) error {
 
 }
 
+// Delete Data Buku
+// @Summary     Delete Data Buku
+// @ID          delete-buku
+// @Produce     json
+// @Tags        Book
+// @Success     200 {object} model.ResponseOK
+// @Failure     400 {object} model.ResponseError
+// @Failure     400 {object} model.ResponseError
+// @Router      /books/{id} [delete]
 func DeleteBook(e echo.Context) error {
 	//Proses menerima parameter id
 	id := e.Param("id")
