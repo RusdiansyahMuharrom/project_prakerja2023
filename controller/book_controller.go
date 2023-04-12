@@ -164,3 +164,34 @@ func UpdateBook(e echo.Context) error {
 	})
 
 }
+
+func DeleteBook(e echo.Context) error {
+	//Proses menerima parameter id
+	id := e.Param("id")
+
+	book := model.Book{}
+
+	//Proses pengecekan data apakah ada atau tidak
+	err := configuration.DB.First(&book, id).Error
+	if err != nil {
+		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+			Message: "Get Data Gagal!",
+			Error:   err.Error(),
+		})
+	}
+
+	//Proses delete data ke database
+	errDelete := configuration.DB.Delete(&book).Error
+	if errDelete != nil {
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
+			Message: "Delete Data Gagal!",
+			Error:   errDelete.Error(),
+		})
+	}
+
+	return e.JSON(http.StatusOK, model.ResponseOK{
+		Message: "Sukses!",
+		Data:    book,
+	})
+
+}
