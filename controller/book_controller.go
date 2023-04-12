@@ -101,3 +101,66 @@ func GetBookById(e echo.Context) error {
 	})
 
 }
+
+func UpdateBook(e echo.Context) error {
+	//Proses menerima parameter id
+	id := e.Param("id")
+
+	bookRequest := model.BookRequest{}
+	book := model.Book{}
+
+	//Proses pengecekan data apakah ada atau tidak
+	err := configuration.DB.First(&book, id).Error
+	if err != nil {
+		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+			Message: "Get Data Gagal!",
+			Error:   err.Error(),
+		})
+	}
+
+	//Proses penginputan request
+	errBind := e.Bind(&bookRequest)
+	if errBind != nil {
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
+			Message: "Periksa kembali inputan anda!",
+			Error:   errBind.Error(),
+		})
+	}
+
+	//Validasi data yang diinputkan
+	var validate = validator.New()
+	errValidate := validate.Struct(bookRequest)
+	if errValidate != nil {
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
+			Message: "Periksa kembali inputan anda!",
+			Error:   errValidate.Error(),
+		})
+	}
+
+	//Proses perubahan data
+	book.No_ISBN = bookRequest.No_ISBN
+	book.Judul = bookRequest.Judul
+	book.Penerbit = bookRequest.Penerbit
+	book.Penulis = bookRequest.Penulis
+	book.Tanggal_penerimaan = bookRequest.Tanggal_penerimaan
+	book.Tahun_terbit = bookRequest.Tahun_terbit
+	book.Jumlah_halaman = bookRequest.Jumlah_halaman
+	if bookRequest.Keterangan != "" {
+		book.Keterangan = &bookRequest.Keterangan
+	}
+
+	//Proses update data ke database
+	errSave := configuration.DB.Save(&book).Error
+	if errSave != nil {
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
+			Message: "Update Data Gagal!",
+			Error:   errSave.Error(),
+		})
+	}
+
+	return e.JSON(http.StatusOK, model.ResponseOK{
+		Message: "Sukses!",
+		Data:    book,
+	})
+
+}
