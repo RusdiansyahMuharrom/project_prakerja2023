@@ -6,6 +6,7 @@ import (
 	"project_prakerja2023/route"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 // @title                      API Pengolahan Data Buku Perpustakaan
@@ -20,6 +21,11 @@ func main() {
 	configuration.DatabaseInit()
 
 	e := echo.New()
+	//Set cors
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: configuration.AllowOrigins(),
+	}))
+
 	//Inisialisasi route
 	route.RouteInit(e)
 
