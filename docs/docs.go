@@ -91,6 +91,15 @@ const docTemplate = `{
                 ],
                 "summary": "Get Data Buku By Id",
                 "operationId": "get-buku-by-id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id buku",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -120,6 +129,13 @@ const docTemplate = `{
                 "summary": "Update Data Buku",
                 "operationId": "update-buku",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id buku",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
                     {
                         "description": "Request Body",
                         "name": "Input",
@@ -154,6 +170,15 @@ const docTemplate = `{
                 ],
                 "summary": "Delete Data Buku",
                 "operationId": "delete-buku",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id buku",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -173,7 +198,43 @@ const docTemplate = `{
     },
     "definitions": {
         "model.BookRequest": {
-            "type": "object"
+            "type": "object",
+            "required": [
+                "judul",
+                "jumlah_halaman",
+                "no_isbn",
+                "penerbit",
+                "penulis",
+                "tahun_terbit",
+                "tanggal_penerimaan"
+            ],
+            "properties": {
+                "judul": {
+                    "type": "string"
+                },
+                "jumlah_halaman": {
+                    "type": "integer"
+                },
+                "keterangan": {
+                    "type": "string"
+                },
+                "no_isbn": {
+                    "type": "string"
+                },
+                "penerbit": {
+                    "type": "string"
+                },
+                "penulis": {
+                    "type": "string"
+                },
+                "tahun_terbit": {
+                    "type": "integer"
+                },
+                "tanggal_penerimaan": {
+                    "type": "string",
+                    "example": "YYYY-MM-DD"
+                }
+            }
         },
         "model.ResponseError": {
             "type": "object",

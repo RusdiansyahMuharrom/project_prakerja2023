@@ -26,8 +26,8 @@ type BookRequest struct {
 	Judul              string `json:"judul" validate:"required"`
 	Penerbit           string `json:"penerbit" validate:"required"`
 	Penulis            string `json:"penulis" validate:"required"`
-	Tanggal_penerimaan string `json:"tanggal_penerimaan" validate:"required"`
-	Tahun_terbit       int    `json:"tahun_terbit" validate:"required" example:"YYYY-MM-DD"`
+	Tanggal_penerimaan string `json:"tanggal_penerimaan" validate:"required" example:"YYYY-MM-DD"`
+	Tahun_terbit       int    `json:"tahun_terbit" validate:"required"`
 	Jumlah_halaman     int    `json:"jumlah_halaman" validate:"required"`
 	Keterangan         string `json:"keterangan"`
 }

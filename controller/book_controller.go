@@ -79,7 +79,6 @@ func CreateBook(e echo.Context) error {
 // @Tags        Book
 // @Success     200 {object} model.ResponseOK
 // @Failure     400 {object} model.ResponseError
-// @Failure     400 {object} model.ResponseError
 // @Router      /books [get]
 func GetAllBook(e echo.Context) error {
 	books := []model.Book{}
@@ -100,18 +99,15 @@ func GetAllBook(e echo.Context) error {
 
 }
 
-// Update Data Buku
-// @Summary     Update Data Buku
-// @Description Semua wajib diisi kecuali keterangan
-// @ID          update-buku
-// @Accept      json
+// Get Data Buku By Id
+// @Summary     Get Data Buku By Id
+// @ID          get-buku-by-id
 // @Produce     json
-// @Param       Input body model.BookRequest true "Request Body"
 // @Tags        Book
+// @Param       id path string true "id buku"
 // @Success     200 {object} model.ResponseOK
 // @Failure     400 {object} model.ResponseError
-// @Failure     400 {object} model.ResponseError
-// @Router      /books/{id} [put]
+// @Router      /books/{id} [get]
 func GetBookById(e echo.Context) error {
 	//Proses menerima parameter id
 	id := e.Param("id")
@@ -121,7 +117,7 @@ func GetBookById(e echo.Context) error {
 	//Proses get data dari database
 	err := configuration.DB.First(&book, id).Error
 	if err != nil {
-		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
 			Message: "Get Data Gagal!",
 			Error:   err.Error(),
 		})
@@ -134,15 +130,18 @@ func GetBookById(e echo.Context) error {
 
 }
 
-// Get Data Buku By Id
-// @Summary     Get Data Buku By Id
-// @ID          get-buku-by-id
+// Update Data Buku
+// @Summary     Update Data Buku
+// @Description Semua wajib diisi kecuali keterangan
+// @ID          update-buku
+// @Accept      json
 // @Produce     json
 // @Tags        Book
+// @Param       id path string true "id buku"
+// @Param       Input body model.BookRequest true "Request Body"
 // @Success     200 {object} model.ResponseOK
 // @Failure     400 {object} model.ResponseError
-// @Failure     400 {object} model.ResponseError
-// @Router      /books/{id} [get]
+// @Router      /books/{id} [put]
 func UpdateBook(e echo.Context) error {
 	//Proses menerima parameter id
 	id := e.Param("id")
@@ -153,7 +152,7 @@ func UpdateBook(e echo.Context) error {
 	//Proses pengecekan data apakah ada atau tidak
 	err := configuration.DB.First(&book, id).Error
 	if err != nil {
-		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
 			Message: "Get Data Gagal!",
 			Error:   err.Error(),
 		})
@@ -211,8 +210,8 @@ func UpdateBook(e echo.Context) error {
 // @ID          delete-buku
 // @Produce     json
 // @Tags        Book
+// @Param       id path string true "id buku"
 // @Success     200 {object} model.ResponseOK
-// @Failure     400 {object} model.ResponseError
 // @Failure     400 {object} model.ResponseError
 // @Router      /books/{id} [delete]
 func DeleteBook(e echo.Context) error {
@@ -224,7 +223,7 @@ func DeleteBook(e echo.Context) error {
 	//Proses pengecekan data apakah ada atau tidak
 	err := configuration.DB.First(&book, id).Error
 	if err != nil {
-		return e.JSON(http.StatusInternalServerError, model.ResponseError{
+		return e.JSON(http.StatusBadRequest, model.ResponseError{
 			Message: "Get Data Gagal!",
 			Error:   err.Error(),
 		})
