@@ -234,7 +234,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "Development 1.0",
-	Host:             "projectprakerja2023-production.up.railway.app",
+	Host:             "127.0.0.1:3002",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
 	Title:            "API Pengolahan Data Buku Perpustakaan",

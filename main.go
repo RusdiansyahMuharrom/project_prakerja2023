@@ -12,7 +12,7 @@ import (
 // @title                      API Pengolahan Data Buku Perpustakaan
 // @version                    Development 1.0
 // @description                This is a dedicated API Pengolahan Data Buku Perpustakaan.
-// @host                       projectprakerja2023-production.up.railway.app
+// @host                       127.0.0.1:3002
 // @BasePath                   /
 // @schemes 				   http
 

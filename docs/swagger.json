@@ -9,7 +9,7 @@
         "contact": {},
         "version": "Development 1.0"
     },
-    "host": "projectprakerja2023-production.up.railway.app",
+    "host": "127.0.0.1:3002",
     "basePath": "/",
     "paths": {
         "/books": {
