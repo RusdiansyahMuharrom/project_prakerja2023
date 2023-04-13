@@ -39,7 +39,7 @@ definitions:
       message:
         type: string
     type: object
-host: 127.0.0.1:3002
+host: projectprakerja2023-production.up.railway.app
 info:
   contact: {}
   description: This is a dedicated API Pengolahan Data Buku Perpustakaan.
