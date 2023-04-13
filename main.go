@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"project_prakerja2023/configuration"
 	"project_prakerja2023/docs"
 	"project_prakerja2023/route"
@@ -25,7 +24,7 @@ func main() {
 	route.RouteInit(e)
 
 	//set swagger host
-	docs.SwaggerInfo.Host = os.Getenv("HOST")
+	docs.SwaggerInfo.Host = configuration.Get_env("APP_PORT")
 
 	e.Logger.Fatal(e.Start(":" + configuration.GetPort()))
 }
