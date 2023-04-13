@@ -240,7 +240,7 @@ func DeleteBook(e echo.Context) error {
 
 	return e.JSON(http.StatusOK, model.ResponseOK{
 		Message: "Sukses!",
-		Data:    book,
+		Data:    "Data dengan id " + id + " berhasil dihapus!",
 	})
 
 }
