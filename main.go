@@ -24,6 +24,7 @@ func main() {
 	//Set cors
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: configuration.AllowOrigins(),
+		AllowMethods: configuration.AllowMethods(),
 	}))
 
 	//Inisialisasi route
