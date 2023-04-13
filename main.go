@@ -24,7 +24,7 @@ func main() {
 	route.RouteInit(e)
 
 	//set swagger host
-	docs.SwaggerInfo.Host = configuration.Get_env("APP_PORT")
+	docs.SwaggerInfo.Host = configuration.Get_env("APP_HOST")
 
 	e.Logger.Fatal(e.Start(":" + configuration.GetPort()))
 }
