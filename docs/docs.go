@@ -173,42 +173,7 @@ const docTemplate = `{
     },
     "definitions": {
         "model.BookRequest": {
-            "type": "object",
-            "required": [
-                "judul",
-                "jumlah_halaman",
-                "no_isbn",
-                "penerbit",
-                "penulis",
-                "tahun_terbit",
-                "tanggal_penerimaan"
-            ],
-            "properties": {
-                "judul": {
-                    "type": "string"
-                },
-                "jumlah_halaman": {
-                    "type": "integer"
-                },
-                "keterangan": {
-                    "type": "string"
-                },
-                "no_isbn": {
-                    "type": "string"
-                },
-                "penerbit": {
-                    "type": "string"
-                },
-                "penulis": {
-                    "type": "string"
-                },
-                "tahun_terbit": {
-                    "type": "integer"
-                },
-                "tanggal_penerimaan": {
-                    "type": "string"
-                }
-            }
+            "type": "object"
         },
         "model.ResponseError": {
             "type": "object",
@@ -234,9 +199,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "Development 1.0",
-	Host:             "127.0.0.1:3002",
+	Host:             "",
 	BasePath:         "/",
-	Schemes:          []string{"http"},
+	Schemes:          []string{},
 	Title:            "API Pengolahan Data Buku Perpustakaan",
 	Description:      "This is a dedicated API Pengolahan Data Buku Perpustakaan.",
 	InfoInstanceName: "swagger",

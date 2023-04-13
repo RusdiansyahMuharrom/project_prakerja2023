@@ -1,31 +1,6 @@
 basePath: /
 definitions:
   model.BookRequest:
-    properties:
-      judul:
-        type: string
-      jumlah_halaman:
-        type: integer
-      keterangan:
-        type: string
-      no_isbn:
-        type: string
-      penerbit:
-        type: string
-      penulis:
-        type: string
-      tahun_terbit:
-        type: integer
-      tanggal_penerimaan:
-        type: string
-    required:
-    - judul
-    - jumlah_halaman
-    - no_isbn
-    - penerbit
-    - penulis
-    - tahun_terbit
-    - tanggal_penerimaan
     type: object
   model.ResponseError:
     properties:
@@ -39,7 +14,6 @@ definitions:
       message:
         type: string
     type: object
-host: 127.0.0.1:3002
 info:
   contact: {}
   description: This is a dedicated API Pengolahan Data Buku Perpustakaan.
@@ -148,6 +122,4 @@ paths:
       summary: Update Data Buku
       tags:
       - Book
-schemes:
-- http
 swagger: "2.0"

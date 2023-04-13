@@ -3,6 +3,7 @@ package configuration
 import (
 	"log"
 	"os"
+	"strings"
 
 	"github.com/joho/godotenv"
 )
@@ -21,4 +22,12 @@ func GetPort() string {
 		return Get_env("APP_PORT")
 	}
 	return port
+}
+
+func GetHostScheme() (string, []string) {
+	app_host := Get_env("APP_HOST")
+	temp := strings.Split(app_host, "://")
+	schema := []string{temp[0]}
+
+	return temp[1], schema
 }
